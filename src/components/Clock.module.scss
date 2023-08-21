@@ -1,0 +1,44 @@
+$num-of-circles : 12;
+$circle-size : 40px;
+$container-size : 200px;
+$displacemt-angle : 360 / $num-of-circles;
+
+.clock-container {
+    background: #000;
+    width: $container-size;
+    height: $container-size;
+    position: relative;
+    border-radius: 50%;
+
+    div{
+        width: $circle-size;
+        height: $circle-size;
+        background-color: orange;
+        border: 1px ridge red;
+        margin: 2px;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        border-radius: 50%;
+        position:absolute;
+        left:50%;
+        top:50%;
+        margin:-($circle-size/2);
+        &:hover{
+            background-color: greenyellow;
+        }
+        &:active{
+            background-color: aqua;
+        }
+
+    }
+}
+
+
+$counter-angle : -60;
+@for $i from 1 through $num-of-circles {
+    .clock-container div:nth-child(#{$i}){
+        transform: rotate($counter-angle * 1deg ) translate($container-size/2) rotate( $counter-angle * -1deg);
+    }
+    $counter-angle: $counter-angle + $displacemt-angle;
+} 
